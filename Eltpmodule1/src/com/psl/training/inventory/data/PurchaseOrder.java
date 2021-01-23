@@ -45,7 +45,7 @@ public class PurchaseOrder {
 	//Printing invoice
 	public void PurchaseInvoice() {
 		for (OrderItem orderItem : oi) {
-			System.out.println(orderItem.OrderInvoice()+" \nOrderDate:"+this.orderDate );
+			System.out.println(orderItem.OrderInvoice()+" \nOrderDate:"+this.orderDate);
 		}
 	}
 }
