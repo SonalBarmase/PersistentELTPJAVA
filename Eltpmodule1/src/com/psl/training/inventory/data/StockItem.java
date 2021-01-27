@@ -44,7 +44,7 @@ public class StockItem
 	
 	//Invoice
 	public String StockInvoice() {
-		return ("ItemNumber:" +itemNumber+" \nItemDescription:"+itemDescription+" \nItemPrice:"+itemPrice);
+		return ("ItemNumber:" +itemNumber+" ItemDescription:"+itemDescription+" Quantity:"+quantity);
 	}
 	
 

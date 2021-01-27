@@ -1,15 +1,18 @@
 package com.psl.training.inventory.data;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class PurchaseOrder {
 	private int poNumber;
-	private Date orderDate = new Date();
-	private Date shipDate = new Date();
+	private LocalDate orderDate;
+	public LocalDate shipDate;
+	public LocalDate getShipDate() {
+		return shipDate;
+	}
 	private OrderItem [] oi;
 	private int sum;
 	
-	public void create(int pono,Date orderDt) {
+	public void create(int pono,LocalDate orderDt) {
 		this.poNumber=pono;
 		this.orderDate=orderDt;		
 	}
@@ -18,7 +21,7 @@ public class PurchaseOrder {
 		this.oi=arr1;		
 	}
 	
-	public void setShipDate(Date date) {
+	public void setShipDate(LocalDate date) {
 		shipDate=date;
 	}
 
@@ -28,6 +31,14 @@ public class PurchaseOrder {
 	}
 	
 	
+	public int getPoNumber() {
+		return poNumber;
+	}
+
+	public void setPoNumber(int poNumber) {
+		this.poNumber = poNumber;
+	}
+
 	//calculating bill
 	public int calculateBill() {
 		for (OrderItem orderItem : oi) {
@@ -43,9 +54,11 @@ public class PurchaseOrder {
 		}
 	}
 	//Printing invoice
-	public void PurchaseInvoice() {
+	public String PurchaseInvoice() {
+		String s="";
 		for (OrderItem orderItem : oi) {
-			System.out.println(orderItem.OrderInvoice()+" \nOrderDate:"+this.orderDate);
+			s+=orderItem.OrderInvoice()+" \nOrderDate:"+this.orderDate;
 		}
+		return s;
 	}
 }

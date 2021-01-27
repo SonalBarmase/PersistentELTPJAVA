@@ -3,15 +3,21 @@ package com.psl.training.inventory.data;
 public class Customer {
 	private int id;
 	private String name;
-	private String homePhone;
 	private String cellPhone;
-	private String workPhone;
 	private String street;
 	private String city;
 	private String state;
 	private int zip;
 	private PurchaseOrder[] po;
 	private int bill;
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Customer(int id, String name) {
 		super();
 		this.id = id;
@@ -23,15 +29,13 @@ public class Customer {
 		this.state = state;
 		this.zip = zip;
 	}
-	public void setPhoneNumbers(String homePhone,String cellPhone,String workPhone)
+	public void setPhoneNumbers(String cellPhone)
 	{
-		this.homePhone = homePhone;
 		this.cellPhone = cellPhone;
-		this.workPhone = workPhone;
 	}
 	
 	public String printPhoneNumbers() {
-		return "PhoneNumbers [homePhone=" +homePhone +", cellPhone=" +cellPhone+ ", workPhone=" + workPhone + "]";
+		return "PhoneNumbers [cellPhone=" +cellPhone+ "]";
 	}
 	public String printShippingAddress() {
 		return "Address [street=" + street + ", city=" + city + ", state=" + state + ", zip="
@@ -54,13 +58,16 @@ public class Customer {
 		}
 	}
 	//Invoice
-	public void CustomerInvoice() {
-		System.out.println(this.id+ " "+ this.name);
+	public String CustomerInvoice() {
+		String s = "";
+		s=s+ this.id+ " "+ this.name;
 		for (PurchaseOrder purchaseOrder : po) {
-			purchaseOrder.PurchaseInvoice();
+			s=s+purchaseOrder.PurchaseInvoice();
 			bill+=purchaseOrder.calculateBill();
 		}
-		System.out.println("Total Bill:"+bill);
+		s+="Total Bill:"+bill;
+		return s;
 	}
+	
 
 }
